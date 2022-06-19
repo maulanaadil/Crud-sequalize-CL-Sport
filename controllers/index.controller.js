@@ -1,9 +1,7 @@
 module.exports = {
   index: async (req, res) => {
-    const name = 'Adit, Software Engginers';
-    
+    const name = 'Adil gans';
 
-    return res.render('index', { name,
-    title : "Dashboard",  });
+    return res.render('index', { name, title: 'Dashboard' });
   },
 };

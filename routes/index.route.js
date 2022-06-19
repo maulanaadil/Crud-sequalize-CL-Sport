@@ -1,16 +1,19 @@
 const indexController = require('../controllers/index.controller');
-const postController = require('../controllers/post.controller');
+const clubController = require('../controllers/club.controller');
+const playerController = require('../controllers/player.controller');
 
 const auth = require('../middlewares/auth');
 
 const router = require('express').Router();
 
 router.get('/', indexController.index);
-router.get('/posts', postController.index);
-router.get('/posts/create', postController.create);
-router.get('/posts/delete/:id', postController.delete);
-router.post('/posts/store', postController.store);
-router.get('/posts/edit/:id', postController.change);
-router.post('/posts/edit', postController.edit);
+router.get('/clubs', clubController.index);
+router.get('/clubs/create', clubController.create);
+router.post('/clubs/store', clubController.store);
+router.get('/clubs/delete/:id', clubController.delete);
+router.get('/clubs/edit/:id', clubController.change);
+router.post('/clubs/edit', clubController.edit);
+
+router.get('/players', playerController.index);
 
 module.exports = router;

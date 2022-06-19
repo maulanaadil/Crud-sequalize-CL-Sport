@@ -1,0 +1,33 @@
+<%- include('../includes/header'); %>
+
+<div class="container">
+  <h2>Edit</h2>
+
+  <form action="/clubs/edit" method="POST">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        value="<%= clubById.name %>"
+        class="form-control"
+        id="name"
+        name="name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="country" class="form-label">country</label>
+      <input
+        type="text"
+        value="<%= clubById.country %>"
+        class="form-control"
+        id="country"
+        name="country"
+      />
+    </div>
+    <input type="text" name="id" value="<%= clubById.id %>" hidden />
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+  </form>
+</div>
+
+<%- include('../includes/footer'); %>

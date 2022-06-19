@@ -1,0 +1,37 @@
+<%- include('../includes/header'); %>
+
+<div class="container">
+  <h2>All Player</h2>
+  <a href="#" class="btn btn-primary mt-3">Create Player</a>
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Club</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% players.forEach( (player) => { %>
+      <tr>
+        <td><%= player.id %></td>
+        <td><%= player.name %></td>
+        <td><%= player.age %></td>
+        <td><%= player.Club.name %></td>
+        <td>
+          <a href="#">
+            <button class="btn btn-primary">Edit</button>
+          </a>
+          <a href="#">
+            <button class="btn btn-danger">Delete</button>
+          </a>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../includes/footer'); %>

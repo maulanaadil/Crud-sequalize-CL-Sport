@@ -1,0 +1,35 @@
+<%- include('../includes/header'); %>
+
+<div class="container">
+  <h2>All Clubs</h2>
+  <a href="/clubs/create" class="btn btn-primary mt-3">Create Club</a>
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% clubs.forEach( (club) => { %>
+      <tr>
+        <td><%= club.id %></td>
+        <td><%= club.name %></td>
+        <td><%= club.country %></td>
+        <td>
+          <a href="/clubs/edit/<%= club.id %>">
+            <button class="btn btn-primary">Edit</button>
+          </a>
+          <a href="/clubs/delete/<%= club.id %>">
+            <button class="btn btn-danger">Delete</button>
+          </a>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../includes/footer'); %>
