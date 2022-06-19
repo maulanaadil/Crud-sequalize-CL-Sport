@@ -10,52 +10,63 @@ module.exports = {
     });
   },
 
-  //   create: async (req, res) => {
-  //     return res.render('post/create');
-  //   },
+  create: async (req, res) => {
+    const clubs = await Club.findAll();
 
-  //   store: async (req, res) => {
-  //     await Post.create({
-  //       title: req.body.title,
-  //       content: req.body.content,
-  //     });
+    return res.render('players/create', {
+      clubs,
+    });
+  },
 
-  //     return res.redirect('/posts');
-  //   },
+  store: async (req, res) => {
+    await Player.create({
+      name: req.body.name,
+      age: req.body.age,
+      ClubId: req.body.club,
+    });
 
-  //   delete: async (req, res) => {
-  //     const id = req.params.id;
-  //     await Post.destroy({
-  //       where: {
-  //         id: id,
-  //       },
-  //     });
+    return res.redirect('/players');
+  },
 
-  //     return res.redirect('/posts');
-  //   },
+  delete: async (req, res) => {
+    const id = req.params.id;
+    await Player.destroy({
+      where: {
+        id: id,
+      },
+    });
 
-  //   change: async (req, res) => {
-  //     const id = req.params.id;
-  //     const postById = await Post.findOne({
-  //       where: { id: id },
-  //     });
-  //     return res.render('post/edit', {
-  //       postById,
-  //     });
-  //   },
-  //   edit: async (req, res) => {
-  //     await Post.update(
-  //       {
-  //         title: req.body.title,
-  //         content: req.body.content,
-  //       },
-  //       {
-  //         where: {
-  //           id: req.body.id,
-  //         },
-  //       }
-  //     );
+    return res.redirect('/players');
+  },
 
-  //     return res.redirect('/posts');
-  //   },
+  change: async (req, res) => {
+    const id = req.params.id;
+    const playerById = await Player.findOne({
+      where: { id: id },
+      include: Club,
+    });
+    const clubs = await Club.findAll();
+
+    return res.render('players/edit', {
+      playerById,
+      clubs,
+    });
+  },
+
+  edit: async (req, res) => {
+    await Player.update(
+      {
+        name: req.body.name,
+        age: req.body.age,
+        ClubId: req.body.club,
+      },
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    );
+
+    return res.redirect('/players');
+  },
 };

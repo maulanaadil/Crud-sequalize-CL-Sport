@@ -15,5 +15,10 @@ router.get('/clubs/edit/:id', clubController.change);
 router.post('/clubs/edit', clubController.edit);
 
 router.get('/players', playerController.index);
+router.get('/players/create', playerController.create);
+router.post('/players/store', playerController.store);
+router.get('/players/delete/:id', playerController.delete);
+router.get('/players/edit/:id', playerController.change);
+router.post('/players/edit', playerController.edit);
 
 module.exports = router;
